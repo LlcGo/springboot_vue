@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.springboot_vue.mapper.RoleMapper">
+
+    <resultMap id="BaseResultMap" type="com.lc.springboot_vue.pojo.Role">
+            <id property="roleId" column="roleId" jdbcType="INTEGER"/>
+            <result property="roleName" column="roleName" jdbcType="VARCHAR"/>
+            <result property="roleDescribe" column="roleDescribe" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        roleId,roleName,roleDescribe
+    </sql>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.springboot_vue.mapper.TbFileMapper">
+
+    <resultMap id="BaseResultMap" type="com.lc.springboot_vue.pojo.TbFile">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="fileName" column="fileName" jdbcType="VARCHAR"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+            <result property="fileSize" column="fileSize" jdbcType="DOUBLE"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="isDelete" column="isDelete" jdbcType="BOOLEAN"/>
+            <result property="isenable" column="isenable" jdbcType="BOOLEAN"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,fileName,type,
+        fileSize,url,isDelete,
+        isenable
+    </sql>
+</mapper>

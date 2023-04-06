@@ -1,0 +1,39 @@
+server:
+  port: 80
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.190.100:3306/proj01?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: root
+  redis:
+    host: 192.168.190.100
+    port: 6379
+    password: root
+    database: 1
+    lettuce:
+      pool:
+        max-active: 8 #最大连接数
+        max-wait: 1ms #最大阻塞等待时间
+        max-idle: 4 #连接池中的最大空闲连接
+        min-idle: 8 #连接池中的最小空闲连接
+  jackson:
+    default-property-inclusion: non_null # JSON处理时忽略非空字段
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: assign_id #设置雪花算法
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false #开启驼峰
+  type-aliases-package: com.lc.springboot_vue.pojo # 别名扫描包
+
+
+logging:
+    level:
+      com.hmdp: debug
+
+image:
+  path: E:\ideaJava\src\main\resources\static\
+

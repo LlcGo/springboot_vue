@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lc.springboot_vue.mapper.UserMapper">
+    <select id="getRoleById" parameterType="Long" resultType="String">
+        select tr.roleName from tb_user tu left join tb_user_role tur on tu.id = tur.user_id
+                                           left join tb_role tr on tur.role_id = tr.roleId where tu.id = #{userId};
+    </select>
+
+    <select id="getMenuIdById" parameterType="Long" resultType="java.lang.Integer">
+        select tmr.menu_id from tb_user tu left join  tb_user_role tur on tu.id = tur.user_id
+                                           left join tb_menu_role tmr on tur.role_id = tmr.role_id
+                                           left join tb_menu tm on tmr.menu_id = tm.menu_id where tu.id = #{id} and tm.isleaf = 'Y';
+    </select>
+    <select id="getLikeByClassName" resultType="com.lc.springboot_vue.pojo.User">
+        select tu.* from tb_user tu
+        left join tb_class tc on tu.id = tc.userId where
+        <choose>
+            <when test="userName == null">
+                tc.cname = #{className} limit #{page},#{pageSize};
+            </when>
+            <otherwise>
+                tc.cname = #{className} and tu.username = #{userName} limit #{page},#{pageSize};
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>
